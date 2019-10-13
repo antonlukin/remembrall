@@ -1,0 +1,18 @@
+{
+  "name": "rememberall",
+  "author": {
+    "name": "Anton Lukin",
+    "email": "anton@lukin.me",
+    "url": "https://lukin.me"
+  },
+  "license": "MIT",
+  "version": "1.0.0",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "get-urls": "^9.1.0",
+    "node-telegram-bot-api": "^0.30.0",
+    "path": "^0.12.7",
+    "sqlite3": "^4.1.0"
+  }
+}
