@@ -14,8 +14,8 @@
  */
 require('dotenv').config();
 
-const app = require('./modules/server');
-const bot = require('./modules/bot');
+const app = require('./app/server');
+const bot = require('./app/bot');
 
 /**
  * Start express app

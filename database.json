@@ -2,7 +2,7 @@
     "defaultEnv": "local",
     "local": {
       "driver": "sqlite3",
-      "filename": "data/remembrall.db",
+      "filename": "database/remembrall.db",
       "database": "remembrall"
     }
 }

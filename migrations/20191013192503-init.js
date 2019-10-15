@@ -16,16 +16,17 @@ exports.setup = function(options, seedLink) {
 
 exports.up = function(db, callback) {
   db.createTable('messages', {
+    id: {type: 'int' },
     user: { type: 'int' },
-    url: { type: 'string' },
-    text: { type: 'string' },
-    created: { type: 'datetime', defaultValue: new String('CURRENT_TIMESTAMP') }
+    text: { type: 'text' },
+    created: { type: 'text', defaultValue: new String('CURRENT_TIMESTAMP') }
   }, callback);
 
   db.createTable('users', {
-    user: { type: 'int', unique: true },
-    token: { type: 'string' },
-    created: { type: 'datetime', defaultValue: new String('CURRENT_TIMESTAMP') }
+    id: { type: 'int', unique: true },
+    username: { type: 'text' },
+    key: { type: 'text' },
+    public: { type: 'int', defaultValue: 0 }
   }, callback);
 };
 
