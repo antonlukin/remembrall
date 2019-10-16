@@ -16,17 +16,29 @@ exports.setup = function(options, seedLink) {
 
 exports.up = function(db, callback) {
   db.createTable('messages', {
-    id: {type: 'int' },
+    id: {type: 'int', unique: true },
     user: { type: 'int' },
     text: { type: 'text' },
     created: { type: 'text', defaultValue: new String('CURRENT_TIMESTAMP') }
-  }, callback);
+  }, function(callback) {
+    db.addIndex('messages', 'user', 'user', callback);
+  });
 
   db.createTable('users', {
     id: { type: 'int', unique: true },
     username: { type: 'text' },
     key: { type: 'text' },
     public: { type: 'int', defaultValue: 0 }
+  }, callback);
+
+  db.createTable('urls', {
+    message: { type: 'int' },
+    url: { type: 'text' }
+  }, callback);
+
+  db.createTable('tags', {
+    message: { type: 'int' },
+    tag: { type: 'text' }
   }, callback);
 };
 

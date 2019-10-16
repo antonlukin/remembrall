@@ -1,11 +1,13 @@
-const geturl = require('./geturl');
+const getlink = require('./getlink');
 const makepublic = require('./makepublic');
 const makeprivate = require('./makeprivate');
 const resetkey = require('./resetkey');
+const forget = require('./forget');
 
 module.exports = {
-  geturl,
+  getlink,
   makepublic,
   makeprivate,
-  resetkey
+  resetkey,
+  forget
 }

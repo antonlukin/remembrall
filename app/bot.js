@@ -1,4 +1,6 @@
 const Telegraf = require('Telegraf');
+const getUrls = require('get-urls');
+const hashtagRegex = require('hashtag-regex');
 
 const database = require('./database');
 const commands = require('./commands');
@@ -16,13 +18,13 @@ bot.context = {
 }
 
 // Start command
-bot.start('start', (ctx) => {
-  ctx.reply('Send me one link per message with optional description');
+bot.start((ctx) => {
+  ctx.reply('Send me something and I will store it in my database');
 });
 
 // Get link command
-bot.command('geturl', (ctx) => {
-  commands.geturl(ctx, database);
+bot.command('getlink', (ctx) => {
+  commands.getlink(ctx, database);
 });
 
 // Set public link
@@ -40,14 +42,68 @@ bot.command('resetkey', (ctx) => {
   commands.resetkey(ctx, database);
 });
 
+// Reset private token
+bot.command('forget', (ctx) => {
+  commands.forget(ctx, database);
+});
+
+// Handle edited messages
+bot.on('edited_message', (ctx) => {
+  let msg = ctx.update.edited_message;
+
+  // Update message by id
+  let sql = `UPDATE messages SET text = ? WHERE id = ?`;
+
+  database.run(sql, [msg.text, msg.message_id], (err) => {
+    if (err) {
+      console.error(err.message);
+    }
+  });
+});
+
 // Listen for any text message
 bot.on('text', (ctx) => {
-  const msg = ctx.message;
+  let msg = ctx.message;
+
+  let text = msg.text;
+
+  // Let's parse urls
+  let urls = getUrls(text);
+
+  urls.forEach((url) => {
+    // Add urls to db
+    let values = [msg.message_id, url]
+
+    database.run(`INSERT INTO urls (message, url) VALUES (?, ?)`, values, (err) => {
+      if (err) {
+        return console.error(err.message);
+      }
+    });
+
+    text = text.replace(url, '');
+  });
+
+  // Find all hashtags
+  let tags = text.match(hashtagRegex());
+  tags = new Set(tags);
+
+  tags.forEach((tag) => {
+    // Add tags to db
+    let values = [msg.message_id, tag.substring(1)]
+
+    database.run(`INSERT INTO tags (message, tag) VALUES (?, ?)`, values, (err) => {
+      if (err) {
+        return console.error(err.message);
+      }
+    });
+
+    text = text.replace(tag, '');
+  });
 
   // Insert new message
-  const sql = `INSERT INTO messages (id, user, text) VALUES (?, ?, ?)`;
+  let sql = `INSERT INTO messages (id, user, text) VALUES (?, ?, ?)`;
 
-  database.run(sql, [msg.message_id, msg.from.id, msg.text], function (err) {
+  database.run(sql, [msg.message_id, msg.from.id, text], (err) => {
     if (err) {
       return console.error(err.message);
     }

@@ -7,7 +7,7 @@ module.exports = (ctx, database) => {
   // Add new user
   let addUser = () => {
     // Set username
-    let username = msg.from.username || '+' + msg.from.id;
+    let username = msg.from.username || msg.from.id;
 
     // Set key
     let key = nanoid(16);
@@ -22,7 +22,7 @@ module.exports = (ctx, database) => {
 
       url = url + username + '/' + key;
 
-      return ctx.reply('Your remembrall private link: \n' + url);
+      return ctx.reply("Your private remembrall link: \n" + url);
     });
   };
 
@@ -43,12 +43,12 @@ module.exports = (ctx, database) => {
       url = url + row.username;
 
       if (row.public > 0) {
-        return ctx.reply('Your remembrall public link: \n' + url);
+        return ctx.reply("Your public remembrall link: \n" + url);
       }
 
       url = url + '/' + row.key;
 
-      return ctx.reply('Your remembrall private link: \n' + url);
+      return ctx.reply("Your private remembrall link: \n" + url);
     });
   }
 
