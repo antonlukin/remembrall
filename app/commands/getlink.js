@@ -1,56 +1,71 @@
-const nanoid = require('nanoid');
+const nanoid = require('nanoid/generate');
 
 module.exports = (ctx, database) => {
   let msg = ctx.message;
-  let url = process.env.URL;
 
   // Add new user
-  let addUser = () => {
-    // Set username
-    let username = msg.from.username || msg.from.id;
+  const addUser = (key, username) => {
+    return new Promise((resolve, reject) => {
+      // Insert user info
+      let sql = `INSERT INTO users (user, key, username) VALUES (?, ?, ?)`;
 
-    // Set key
-    let key = nanoid(16);
+      database.run(sql, [msg.from.id, key, username], (err) => {
+        if (err) {
+          reject(err.message);
+        }
 
-    // Insert user info
-    let sql = `INSERT INTO users (id, key, username) VALUES (?, ?, ?)`;
-
-    database.run(sql, [msg.from.id, key, username], (err) => {
-      if (err) {
-        return ctx.error(err, ctx);
-      }
-
-      url = url + username + '/' + key;
-
-      return ctx.reply("Your private remembrall link: \n" + url);
-    });
-  };
-
-  // Try to find user in database
-  let findUser = () => {
-    // Select user info by id
-    let sql = `SELECT key, username, public FROM users WHERE id = ? LIMIT 1`;
-
-    database.get(sql, [msg.from.id], (err, row) => {
-      if (err) {
-        return ctx.error(err, ctx);
-      }
-
-      if (typeof row === 'undefined') {
-        return addUser();
-      }
-
-      url = url + row.username;
-
-      if (row.public > 0) {
-        return ctx.reply("Your public remembrall link: \n" + url);
-      }
-
-      url = url + '/' + row.key;
-
-      return ctx.reply("Your private remembrall link: \n" + url);
+        resolve();
+      });
     });
   }
 
-  return findUser();
+  // Try to find user in database
+  const findUser = () => {
+    return new Promise((resolve, reject) => {
+      // Select user info by id
+      let sql = `SELECT key, username, public FROM users WHERE user = ? LIMIT 1`;
+
+      database.get(sql, [msg.from.id], (err, user) => {
+        if (err) {
+          reject(err.message);
+        }
+
+        resolve(user);
+      });
+    });
+  }
+
+  findUser()
+    .then(user => {
+      if (user) {
+        let url = process.env.URL + user.username;
+
+        if (user.public > 0) {
+          return ctx.reply("Your public remembrall link: \n" + url);
+        }
+
+        url = url + '/' + user.key;
+
+        return ctx.reply("Your private remembrall link: \n" + url);
+      }
+
+      // Set key
+      const key = nanoid('0123456789abcdef', 32);
+
+      // Set username
+      const username = msg.from.username || msg.from.id;
+
+      addUser(key, username)
+        .then(() => {
+          let url = process.env.URL + username + '/' + key;
+
+          return ctx.reply("Your private remembrall link: \n" + url);
+        })
+        .catch(message => {
+          ctx.error(message, ctx);
+        })
+    })
+    .catch(message => {
+      ctx.error(message, ctx);
+    })
 }

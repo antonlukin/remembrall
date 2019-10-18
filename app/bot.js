@@ -10,10 +10,10 @@ const bot = new Telegraf(process.env.TOKEN);
 
 // Create context error handler
 bot.context = {
-  error: (err, ctx) => {
+  error: (message, ctx) => {
     ctx.reply('Strange server error. Try later');
 
-    return console.error(err.message);
+    return console.error(message);
   }
 }
 
@@ -52,9 +52,9 @@ bot.on('edited_message', (ctx) => {
   let msg = ctx.update.edited_message;
 
   // Update message by id
-  let sql = `UPDATE messages SET text = ? WHERE id = ?`;
+  let sql = `UPDATE messages SET text = ? WHERE message = ? AND chat = ?`;
 
-  database.run(sql, [msg.text, msg.message_id], (err) => {
+  database.run(sql, [msg.text, msg.message_id, msg.chat.id], (err) => {
     if (err) {
       console.error(err.message);
     }
@@ -72,11 +72,11 @@ bot.on('text', (ctx) => {
 
   urls.forEach((url) => {
     // Add urls to db
-    let values = [msg.message_id, url]
+    let sql = `INSERT INTO urls (message, chat, url) VALUES (?, ?, ?)`
 
-    database.run(`INSERT INTO urls (message, url) VALUES (?, ?)`, values, (err) => {
+    database.run(sql, [msg.message_id, msg.chat.id, url], (err) => {
       if (err) {
-        return console.error(err.message);
+        console.error(err.message);
       }
     });
 
@@ -89,11 +89,11 @@ bot.on('text', (ctx) => {
 
   tags.forEach((tag) => {
     // Add tags to db
-    let values = [msg.message_id, tag.substring(1)]
+    let values = [msg.message_id, msg.chat.id, tag.substring(1)]
 
-    database.run(`INSERT INTO tags (message, tag) VALUES (?, ?)`, values, (err) => {
+    database.run(`INSERT INTO tags (message, chat, tag) VALUES (?, ?, ?)`, values, (err) => {
       if (err) {
-        return console.error(err.message);
+        console.error(err.message);
       }
     });
 
@@ -101,11 +101,11 @@ bot.on('text', (ctx) => {
   });
 
   // Insert new message
-  let sql = `INSERT INTO messages (id, user, text) VALUES (?, ?, ?)`;
+  let sql = `INSERT INTO messages (message, chat, user, text) VALUES (?, ?, ?, ?)`;
 
-  database.run(sql, [msg.message_id, msg.from.id, text], (err) => {
+  database.run(sql, [msg.message_id, msg.chat.id, msg.from.id, text], (err) => {
     if (err) {
-      return console.error(err.message);
+      console.error(err.message);
     }
   });
 });

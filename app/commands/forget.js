@@ -1,24 +1,32 @@
 module.exports = (ctx, database) => {
   let msg = ctx.message;
 
+  // Check if the message replied
+  if (typeof msg.reply_to_message === 'undefined') {
+    return ctx.reply("Reply to the desired message with this command to delete")
+  }
+
   // Try to remove the message
-  let removeMessage = () => {
-    // Check if the message replied
-    if (typeof msg.reply_to_message === 'undefined') {
-      return ctx.reply("Reply to the desired message with this command to delete")
-    }
+  const removeMessage = () => {
+    return new Promise((resolve, reject) => {
+      // Select user info by id
+      let sql = `DELETE FROM messages WHERE message = ? AND chat = ?`;
 
-    // Select user info by id
-    let sql = `DELETE FROM messages WHERE id = ?`;
+      database.run(sql, [msg.reply_to_message.message_id, msg.chat.id], (err) => {
+        if (err) {
+          reject(err.message);
+        }
 
-    database.run(sql, [msg.reply_to_message.message_id], (err, row) => {
-      if (err) {
-        return ctx.error(err, ctx);
-      }
-
-      return ctx.reply("Done. This message was removed from the database");
+        resolve();
+      });
     });
   }
 
-  return removeMessage();
+  removeMessage()
+    .then(() => {
+      ctx.reply("Done. This message was removed from the database");
+    })
+    .catch(message => {
+      ctx.error(message, ctx);
+    })
 }
