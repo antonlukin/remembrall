@@ -1,8 +1,5 @@
 module.exports = (database, req, res) => {
-  let getRows = (user)  => {
-    // Select user and privacy by username
-    let sql = `SELECT user, public FROM users WHERE username = ? LIMIT 1`;
-  }
+  return;
 
   // Find the user in database
   let checkLink = () => {

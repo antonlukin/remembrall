@@ -14,18 +14,23 @@ app.set('views', __dirname + '/../templates');
 app.use(express.static(__dirname + '/../public'));
 
 // Process private user links
-app.get('/:username/:key([a-z0-9_-]{16})', (req, res) => {
-  controllers.getprivate(database, req.params, res);
+app.get('/:username/:key([a-z0-9_-]{32})?', (req, res) => {
+  controllers.user(database, req, res);
 });
 
-// Process public user links
-app.get('/:username', (req, res) => {
-  controllers.getpublic(database, req, res);
+// Show home page
+app.get('/', (req, res, next) => {
+  res.render('home');
 });
 
-// Show index for all other requests
+// Show 404 error
 app.use((req, res) => {
-  res.render('index');
+  res.status(404);
+
+  res.render('error', {
+    'title': 'Page not found',
+    'message': 'We’re sorry, we seem to have lost this page, but we don’t want to lose you. Use the links below to find answers to your questions.'
+  });
 });
 
 module.exports = app;

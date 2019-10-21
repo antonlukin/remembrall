@@ -1,0 +1,13 @@
+.canvas {
+  display: flex;
+  flex-flow: column wrap;
+
+  min-height: calc(100vh - 2rem);
+  margin: 0;
+  padding: 0;
+
+  color: $color-text;
+  background-color: $color-canvas;
+
+  border-radius: 0.25rem;
+}

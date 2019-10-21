@@ -36,18 +36,18 @@ module.exports = (ctx, database) => {
   getUser()
     .then(user => {
       if (!user) {
-        return ctx.reply("No link to update. Request remembrall url first");
+        return ctx.reply('No link to update. Request remembrall url first');
       }
 
       let url = process.env.URL + user.username + '/' + user.key;
 
       if (user.public < 1) {
-        return ctx.reply("Your link already private. Here it is: \n" + url)
+        return ctx.reply('Your link already private. Here it is: \n' + url)
       }
 
       makePrivate()
         .then(() => {
-          ctx.reply("We are done. Your new private link here: \n" + url)
+          ctx.reply('We are done. Your new private link here: \n' + url)
         })
         .catch(message => {
           ctx.error(message, ctx);

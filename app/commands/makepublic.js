@@ -36,18 +36,18 @@ module.exports = (ctx, database) => {
   getUser()
     .then(user => {
       if (!user) {
-        return ctx.reply("No link to update. Request geturl command first");
+        return ctx.reply('No link to update. Request geturl command first');
       }
 
       let url = process.env.URL + user.username;
 
       if (user.public > 0) {
-        return ctx.reply("Your link already public. Here it is: \n" + url)
+        return ctx.reply('Your link already public. Here it is: \n' + url)
       }
 
       makePublic()
         .then(() => {
-          ctx.reply("That's all. Keep your new public link: \n" + url);
+          ctx.reply('That’s all. Keep your new public link: \n' + url);
         })
         .catch(message => {
           ctx.error(message, ctx);

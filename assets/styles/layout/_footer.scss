@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+
+  width: $width-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+
+  .footer__menu a {
+    display: inline;
+
+    margin-right: 1.75rem;
+    font-size: 0.875rem;
+    color: $color-dimmer;
+
+    @media screen and (max-width: 359px) {
+      margin-right: 1.25rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    padding: 2rem 1rem 1rem;
+  }
+}

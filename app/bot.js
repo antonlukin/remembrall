@@ -13,7 +13,7 @@ bot.context = {
   error: (message, ctx) => {
     ctx.reply('Strange server error. Try later');
 
-    return console.error(message);
+    console.error(message);
   }
 }
 
@@ -64,7 +64,6 @@ bot.on('edited_message', (ctx) => {
 // Listen for any text message
 bot.on('text', (ctx) => {
   let msg = ctx.message;
-
   let text = msg.text;
 
   // Let's parse urls

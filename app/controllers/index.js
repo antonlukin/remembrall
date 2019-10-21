@@ -1,7 +1,5 @@
-const getprivate = require('./getprivate');
-const getpublic = require('./getpublic');
+const user = require('./user');
 
 module.exports = {
-  getprivate,
-  getpublic
+  user
 }

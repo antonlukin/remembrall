@@ -38,7 +38,7 @@ module.exports = (ctx, database) => {
   findKey()
     .then(user => {
       if (!user) {
-        return ctx.reply("No key to reset. Request remembrall link first");
+        return ctx.reply('No key to reset. Request remembrall link first');
       }
 
       // Set key
@@ -49,12 +49,12 @@ module.exports = (ctx, database) => {
           let url = process.env.URL + user.username;
 
           if (user.public > 0) {
-            return ctx.reply("Your key was reset but the link still public: \n" + url);
+            return ctx.reply('Your key was reset but the link still public: \n' + url);
           }
 
           url = url + '/' + key;
 
-          return ctx.reply("Your key was reset. Here is your new link: \n" + url);
+          return ctx.reply('Your key was reset. Here is your new link: \n' + url);
         })
         .catch(message => {
           ctx.error(message, ctx);

@@ -3,7 +3,7 @@ module.exports = (ctx, database) => {
 
   // Check if the message replied
   if (typeof msg.reply_to_message === 'undefined') {
-    return ctx.reply("Reply to the desired message with this command to delete")
+    return ctx.reply('Reply to the desired message with this command to delete')
   }
 
   // Try to remove the message
@@ -24,7 +24,7 @@ module.exports = (ctx, database) => {
 
   removeMessage()
     .then(() => {
-      ctx.reply("Done. This message was removed from the database");
+      ctx.reply('Done. This message was removed from the database');
     })
     .catch(message => {
       ctx.error(message, ctx);

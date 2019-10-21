@@ -41,12 +41,12 @@ module.exports = (ctx, database) => {
         let url = process.env.URL + user.username;
 
         if (user.public > 0) {
-          return ctx.reply("Your public remembrall link: \n" + url);
+          return ctx.reply('Your public remembrall link: \n' + url);
         }
 
         url = url + '/' + user.key;
 
-        return ctx.reply("Your private remembrall link: \n" + url);
+        return ctx.reply('Your private remembrall link: \n' + url);
       }
 
       // Set key
@@ -59,7 +59,7 @@ module.exports = (ctx, database) => {
         .then(() => {
           let url = process.env.URL + username + '/' + key;
 
-          return ctx.reply("Your private remembrall link: \n" + url);
+          return ctx.reply('Your private remembrall link: \n' + url);
         })
         .catch(message => {
           ctx.error(message, ctx);

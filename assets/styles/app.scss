@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400');
+
+// Setup default styles
+@import "config/*.scss";
+
+// Width variables
+$width-content: 80rem;
+
+// Color variables
+$color-text: #202020;
+$color-dimmer: #666;
+$color-canvas: #fff;
+
+// Font variables
+$font-system: 'Merriweather', sans-serif;
+
+body {
+  padding: 1rem;
+  font-size: 16px;
+  font-family: $font-system;
+
+  background-color: $color-text;
+
+  @media screen and (max-width: 479px) {
+    padding: 0.5rem;
+  }
+}
+
+// Add layout styles
+@import "layout/*.scss";
