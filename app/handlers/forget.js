@@ -1,4 +1,6 @@
-module.exports = (ctx, database) => {
+const database = require('../database');
+
+module.exports = (ctx) => {
   let msg = ctx.message;
 
   // Check if the message replied

@@ -53,30 +53,6 @@ exports.up = function (db, callback) {
       defaultValue: 0
     }
   }, callback);
-
-  db.createTable('urls', {
-    message: {
-      type: 'int'
-    },
-    chat: {
-      type: 'int'
-    },
-    url: {
-      type: 'text'
-    }
-  }, callback);
-
-  db.createTable('tags', {
-    message: {
-      type: 'int'
-    },
-    chat: {
-      type: 'int'
-    },
-    tag: {
-      type: 'text'
-    }
-  }, callback);
 };
 
 exports.down = function (db) {

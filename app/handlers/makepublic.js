@@ -1,11 +1,13 @@
-module.exports = (ctx, database) => {
+const database = require('../database');
+
+module.exports = (ctx) => {
   let msg = ctx.message;
 
-  // Make the url private
-  const makePrivate = () => {
+  // Make the url public
+  const makePublic = () => {
     return new Promise((resolve, reject) => {
       // Insert user info
-      let sql = `UPDATE users SET public = 0 WHERE user = ?`;
+      let sql = `UPDATE users SET public = 1 WHERE user = ?`;
 
       database.run(sql, [msg.from.id], (err) => {
         if (err) {
@@ -17,8 +19,8 @@ module.exports = (ctx, database) => {
     });
   }
 
-  // Check if the url is private
-  const getUser = () => {
+  // Check if the url is public
+  let getUser = () => {
     return new Promise((resolve, reject) => {
       // Select user info by id
       let sql = `SELECT key, username, public FROM users WHERE user = ? LIMIT 1`;
@@ -36,18 +38,18 @@ module.exports = (ctx, database) => {
   getUser()
     .then(user => {
       if (!user) {
-        return ctx.reply('No link to update. Request remembrall url first');
+        return ctx.reply('No link to update. Request geturl command first');
       }
 
-      let url = process.env.URL + user.username + '/' + user.key;
+      let url = process.env.URL + user.username;
 
-      if (user.public < 1) {
-        return ctx.reply('Your link already private. Here it is: \n' + url)
+      if (user.public > 0) {
+        return ctx.reply('Your link already public. Here it is: \n' + url)
       }
 
-      makePrivate()
+      makePublic()
         .then(() => {
-          ctx.reply('We are done. Your new private link here: \n' + url)
+          ctx.reply('That’s all. Keep your new public link: \n' + url);
         })
         .catch(message => {
           ctx.error(message, ctx);
