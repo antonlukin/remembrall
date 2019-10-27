@@ -33,6 +33,8 @@ app.use((err, req, res, next) => {
     'title': 'An error occurred',
     'message': err.message
   });
+
+  console.error(err.console);
 });
 
 

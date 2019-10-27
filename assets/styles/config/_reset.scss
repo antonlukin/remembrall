@@ -36,12 +36,21 @@ a {
   border-bottom: solid 1px;
 
   &:focus {
+    outline: none;
     border-bottom-color: transparent;
   }
 
   &:hover {
     transition: border .25s;
     border-bottom-color: transparent;
+  }
+}
+
+button {
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
   }
 }
 

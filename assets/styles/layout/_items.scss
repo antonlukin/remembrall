@@ -1,0 +1,141 @@
+.items {
+  display: block;
+  position: relative;
+
+  width: $width-content;
+  max-width: 100%;
+  margin: 1rem auto auto;
+  padding: 0 2rem;
+
+  .item {
+    display: block;
+    position: relative;
+
+    width: $width-content / 2;
+    max-width: 100%;
+    margin-bottom: 2rem;
+    padding-top: 0.5rem;
+
+    font-size: 0.875rem;
+    font-family: $font-system;
+
+    a.number {
+      position: absolute;
+      top: 0.75rem;
+      left: -1.25rem;
+
+      width: 0.75rem;
+      height: 0.75rem;
+
+      user-select: none;
+
+      color: rgba(0, 0, 0, 0.25);
+      border: none;
+
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBmaWxsPSIjYWFhIj48cGF0aCBkPSJNMjIwLjExOCAzMTcuODgzYy02LjY1NSAwLTEzLjMwOC0yLjUzOC0xOC4zODUtNy42MTUtNDcuNTY3LTQ3LjU2OC00Ny41NjctMTI0Ljk2NyAwLTE3Mi41MzVsOTYtOTZjMjMuMDQ0LTIzLjA0MyA1My42OC0zNS43MzMgODYuMjY3LTM1LjczM3M2My4yMjQgMTIuNjkgODYuMjY4IDM1LjczMmM0Ny41NjYgNDcuNTY4IDQ3LjU2NiAxMjQuOTY3IDAgMTcyLjUzNWwtNDMuODgzIDQzLjg4M2MtMTAuMTU0IDEwLjE1NC0yNi42MTUgMTAuMTU0LTM2Ljc3IDAtMTAuMTUzLTEwLjE1My0xMC4xNTMtMjYuNjE2IDAtMzYuNzdsNDMuODgzLTQzLjg4M2MyNy4yOTItMjcuMjkzIDI3LjI5Mi03MS43MDIgMC05OC45OTUtMTMuMjIxLTEzLjIyMS0zMC44LTIwLjUwMi00OS40OTgtMjAuNTAycy0zNi4yNzYgNy4yODEtNDkuNDk4IDIwLjUwM2wtOTYgOTUuOTk5Yy0yNy4yOTMgMjcuMjkzLTI3LjI5MyA3MS43MDMgMCA5OC45OTYgMTAuMTU0IDEwLjE1MyAxMC4xNTMgMjYuNjE2IDAgMzYuNzctNS4wNzUgNS4wNzYtMTEuNzMxIDcuNjE1LTE4LjM4NCA3LjYxNXoiPjwvcGF0aD48cGF0aCBkPSJNMTI4IDUwNmMtMzIuNTg4IDAtNjMuMjI1LTEyLjY5LTg2LjI2Ny0zNS43MzItNDcuNTY3LTQ3LjU2OC00Ny41NjctMTI0Ljk2NyAwLTE3Mi41MzVsNDMuODgyLTQzLjg4MmMxMC4xNTQtMTAuMTUzIDI2LjYxNy0xMC4xNTMgMzYuNzcgMCAxMC4xNTQgMTAuMTUzIDEwLjE1NCAyNi42MTYgMCAzNi43N2wtNDMuODgyIDQzLjg4MmMtMjcuMjkzIDI3LjI5My0yNy4yOTMgNzEuNzAzIDAgOTguOTk2IDEzLjIyIDEzLjIyIDMwLjc5OSAyMC41MDEgNDkuNDk3IDIwLjUwMXMzNi4yNzYtNy4yODEgNDkuNDk5LTIwLjUwM2w5Ni05NS45OTljMjcuMjkyLTI3LjI5MyAyNy4yOTItNzEuNzAzIDAtOTguOTk2LTEwLjE1NC0xMC4xNTQtMTAuMTUzLTI2LjYxNiAwLTM2Ljc3IDEwLjE1My0xMC4xNTMgMjYuNjE2LTEwLjE1MyAzNi43NyAwLjAwMSA0Ny41NjYgNDcuNTY3IDQ3LjU2NiAxMjQuOTY2IDAuMDAxIDE3Mi41MzRsLTk2LjAwMSA5NmMtMjMuMDQ1IDIzLjA0NC01My42ODIgMzUuNzMzLTg2LjI2OSAzNS43MzN6Ij48L3BhdGg+PC9zdmc+);
+      background-size: contain;
+      background-position: center;
+
+      &:hover {
+        transition: filter 0.25s;
+        filter: brightness(50%);
+      }
+
+      &:focus {
+        filter: brightness(50%);
+      }
+
+      @media screen and (max-width: 767px) {
+        top: 0.375rem;
+        left: 0;
+      }
+    }
+
+    button {
+      position: relative;
+      cursor: pointer;
+      margin: 0 0.375rem 0 0.625rem;
+      line-height: 1.25;
+
+      color: $color-links;
+      background-color: transparent;
+      border-bottom: solid 1px;
+
+      &::before {
+        content: '#';
+        position: absolute;
+        top: 1px;
+        left: -0.625rem;
+      }
+
+      &:hover {
+        transition: border 0.25s;
+        border-bottom-color: transparent;
+      }
+    }
+
+    b {
+      font-weight: 700;
+    }
+
+    i {
+      font-style: italic;
+    }
+
+    a {
+      color: $color-links;
+      word-break: break-word;
+    }
+
+    pre {
+      display: block;
+      padding: 0.125rem 0.25rem;
+
+      font-size: 0.8125rem;
+      font-family: $font-mono;
+      white-space: normal;
+
+      background: rgba(0, 0, 0, 0.05);
+      border: solid 1px rgba(0, 0, 0, 0.075);
+      border-radius: 0.125rem;
+
+      @media screen and (max-width: 479px) {
+        font-size: 0.75rem;
+      }
+    }
+
+    code {
+      font-size: 0.8125rem;
+      font-family: $font-mono;
+      white-space: normal;
+
+      color: rgba($color-alert, 0.85);
+
+      @media screen and (max-width: 479px) {
+        font-size: 0.75rem;
+      }
+    }
+
+
+    &.item--hidden {
+      display: none;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media screen and (max-width: 479px) {
+      font-size: 0.8125rem;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-top: 0.5rem;
+  }
+
+  @media screen and (max-width: 479px) {
+    padding: 0 1rem;
+  }
+}

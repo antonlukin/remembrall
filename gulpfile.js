@@ -5,6 +5,7 @@ const concat = require('gulp-concat');
 const cleanCss = require('gulp-clean-css');
 const prefix = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
+const uglify = require('gulp-uglify-es').default;
 
 
 gulp.task('styles', (done) => {
@@ -25,11 +26,22 @@ gulp.task('styles', (done) => {
 });
 
 
+gulp.task('scripts', function (done) {
+  gulp.src('assets/scripts/*.js')
+    .pipe(plumber())
+    .pipe(uglify())
+    .pipe(concat('scripts.min.js'))
+    .pipe(gulp.dest('public/'))
+
+  done();
+});
+
+
 gulp.task('watch', (done) => {
-  gulp.watch('./assets/**/*', gulp.series('styles'));
+  gulp.watch('./assets/**/*', gulp.series('styles', 'scripts'));
 
   done();
 })
 
 
-gulp.task('default', gulp.parallel('styles', 'watch'));
+gulp.task('default', gulp.parallel('styles', 'watch', 'scripts'));

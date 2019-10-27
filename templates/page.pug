@@ -12,14 +12,25 @@ html(lang="en")
     link(rel='stylesheet' href='/styles.min.css')
   body
     .canvas
-      header.poster
-        .poster__about
-          h1 Remebrall — save and share your data with Telegram bot
-          p Just send your notes to Telegram bot and we will store them. Then you will be able to create custom link with all your data.
-          a.button(href='https://tgram.link/remembrall_robot' target='blank' rel='noopener') Start publishing
-        .poster__cover
+      header.header
+        h1 Remembrall notes
+        if (username)
+          h2 Shared by @
+            a(href='https://tgram.link/' + username) #{username}
+        else
+          h2 Shared with Telegram
+      
+        input.search(type='text' placeholder='Search messages')
+
+      section.items
+        each item in items
+          article.item(id=item.id) !{item.text}
+            a.number(href='#' + item.id)
+        
       footer.footer
         nav.footer__menu 
           a(href='https://github.com/antonlukin/remembrall#About') About
           a(href='https://paypal.me/antonlukin/5') Donate
           a(href='https://github.com/antonlukin/remembrall/issues') Submit feedback
+
+    script(src='/scripts.min.js')

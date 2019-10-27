@@ -37,9 +37,11 @@ module.exports = (req, res, next) => {
       }
 
       req.user = user;
-      return next();
+      next();
     })
     .catch(message => {
-      return next(onerror(500, 'Strange server error. Try later.'));
+      next(onerror(500, 'Strange server error. Try later.', {
+        'console': message
+      }));
     })
 }

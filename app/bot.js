@@ -18,13 +18,6 @@ bot.start((ctx) => {
   ctx.reply('Send me something and I will store it in my database');
 });
 
-
-// Listen for any text message
-bot.on('text', handlers.ontext);
-
-// Handle edited messages
-bot.on('edited_message', handlers.edited);
-
 // Get link command
 bot.command('getlink', handlers.getlink);
 
@@ -34,10 +27,27 @@ bot.command('makepublic', handlers.makepublic);
 // Set private link
 bot.command('makeprivate', handlers.makeprivate);
 
+// Fix username on update
+bot.command('fixname', handlers.fixname);
+
 // Reset private token
 bot.command('resetkey', handlers.resetkey);
 
 // Reset private token
 bot.command('forget', handlers.forget);
+
+// Parse text messages as html
+bot.use(handlers.sanitize);
+
+// Handle edited messages
+bot.on('edited_message', handlers.edited);
+
+// Listen for any text messages
+bot.on('text', handlers.ontext);
+
+// Common handler
+bot.on('message', (ctx) => {
+  ctx.reply('This type of message is not supported at this moment');
+});
 
 module.exports = bot;

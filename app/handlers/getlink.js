@@ -50,11 +50,11 @@ module.exports = (ctx) => {
         return ctx.reply('Your private remembrall link: \n' + url);
       }
 
-      // Set key
-      const key = nanoid('0123456789abcdef', 32);
-
       // Set username
       const username = msg.from.username || msg.from.id;
+
+      // Set key
+      const key = nanoid('0123456789abcdef', 32);
 
       addUser(key, username)
         .then(() => {
