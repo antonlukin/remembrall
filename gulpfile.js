@@ -9,7 +9,7 @@ const uglify = require('gulp-uglify-es').default;
 
 
 gulp.task('styles', (done) => {
-  gulp.src('assets/styles/app.scss')
+  gulp.src('src/styles/app.scss')
     .pipe(plumber())
     .pipe(sassGlob())
     .pipe(sass({
@@ -27,7 +27,7 @@ gulp.task('styles', (done) => {
 
 
 gulp.task('scripts', function (done) {
-  gulp.src('assets/scripts/*.js')
+  gulp.src('src/scripts/*.js')
     .pipe(plumber())
     .pipe(uglify())
     .pipe(concat('scripts.min.js'))
@@ -38,7 +38,7 @@ gulp.task('scripts', function (done) {
 
 
 gulp.task('watch', (done) => {
-  gulp.watch('./assets/**/*', gulp.series('styles', 'scripts'));
+  gulp.watch('src/**/*', gulp.series('styles', 'scripts'));
 
   done();
 })
