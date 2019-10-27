@@ -36,14 +36,11 @@ bot.command('resetkey', handlers.resetkey);
 // Reset private token
 bot.command('forget', handlers.forget);
 
-// Parse text messages as html
-bot.use(handlers.sanitize);
-
 // Handle edited messages
-bot.on('edited_message', handlers.edited);
+bot.on('edited_message', handlers.sanitize, handlers.edited);
 
 // Listen for any text messages
-bot.on('text', handlers.ontext);
+bot.on('text', handlers.sanitize, handlers.ontext);
 
 // Common handler
 bot.on('message', (ctx) => {

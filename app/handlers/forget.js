@@ -21,7 +21,7 @@ module.exports = (ctx) => {
 
   // Prepare message to delete
   const prepareMessage = (message, chat) => {
-    removeMessage(matches[2], matches[1])
+    removeMessage(message, chat)
       .then(() => {
         ctx.reply('Done. This message was removed from the database');
       })
@@ -32,7 +32,7 @@ module.exports = (ctx) => {
 
   // Check if the message replied
   if (typeof msg.reply_to_message !== 'undefined') {
-    return removeMessage(msg.reply_to_message.message_id, msg.chat.id)
+    return prepareMessage(msg.reply_to_message.message_id, msg.chat.id)
   }
 
   // Parse message
