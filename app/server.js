@@ -34,7 +34,9 @@ app.use((err, req, res, next) => {
     'message': err.message
   });
 
-  console.error(err.console);
+  if (err.console) {
+    console.error(err.console);
+  }
 });
 
 
