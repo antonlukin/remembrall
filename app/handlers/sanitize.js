@@ -4,6 +4,10 @@ const escape = require('escape-html');
 module.exports = (ctx, next) => {
   let msg = ctx.message;
 
+  if (ctx.update.edited_message) {
+    msg = ctx.update.edited_message;
+  }
+
   const wrapEntity = (content, entity) => {
     switch (entity.type) {
       case 'bold':
