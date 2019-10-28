@@ -55,7 +55,7 @@ module.exports = (ctx) => {
 
           url = url + '/' + key;
 
-          return ctx.reply('Your key was reset. Here is your new link: \n' + url);
+          ctx.reply('Your key was reset. Here is your new link: \n' + url);
         })
         .catch(message => {
           ctx.error(message, ctx);

@@ -60,7 +60,7 @@ module.exports = (ctx) => {
         .then(() => {
           let url = process.env.URL + username + '/' + key;
 
-          return ctx.reply('Your private remembrall link: \n' + url);
+          ctx.reply('Your private remembrall link: \n' + url);
         })
         .catch(message => {
           ctx.error(message, ctx);

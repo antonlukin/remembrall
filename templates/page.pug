@@ -1,15 +1,12 @@
 doctype html
 html(lang="en")
   head
-    meta(charset='utf-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-    title Remembrall - save and share your data with Telegram bot
-    
-    link(rel='icon' type='image/png' href='/images/icon-128.png')
-    link(rel='icon' type='image/png' sizes='192x192' href='/images/icon-192.png')
-    link(rel='apple-touch-icon' type='image/png' sizes='180x180' href='/images/icon-180.png')
+    include header
 
-    link(rel='stylesheet' href='/styles.min.css?v=1.0.0')
+    if (username) 
+      title Remembrall notes shared by @#{username}
+    else 
+      title Remembrall notes shared with Telegram
   body
     .canvas
       header.header
@@ -26,11 +23,7 @@ html(lang="en")
         each item in items
           article.item(id=item.id) !{item.text}
             a.number(href='#' + item.id)
-        
-      footer.footer
-        nav.footer__menu 
-          a(href='https://github.com/antonlukin/remembrall#About') About
-          a(href='https://paypal.me/antonlukin/5') Donate
-          a(href='https://github.com/antonlukin/remembrall/issues') Submit feedback
+      
+      include footer
 
     script(src='/scripts.min.js')
