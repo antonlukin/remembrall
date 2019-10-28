@@ -5,7 +5,7 @@
   // Show search block
   field.classList.add('search--visible');
 
-  // Set focus
+  // Focus search input
   field.focus();
 
   const updateField = () => {
@@ -34,8 +34,6 @@
     if (found < 1) {
       field.classList.add('search--error');
     }
-
-    return field.focus();
   }
 
   // On hashtag click
