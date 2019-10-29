@@ -15,7 +15,7 @@ bot.context = {
 
 // Start command
 bot.start((ctx) => {
-  ctx.reply('Send me something and I will store it in my database');
+  ctx.reply('Send me something and I will store it in my database.\nTo get your personal link use /getlink command.');
 });
 
 // Get link command
