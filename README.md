@@ -9,18 +9,23 @@ By default your links are only visible to you, but you can make Remembrall page 
 Remembrall is an awesome tool for those who love notes, organization and clear design. 
 
 
-### Hоw it works 
+## How it works 
 
 Send messages to [@remembrall_robot](https://tgram.lukin/remembrall_robot) in Telegram: paste your links, add descriptions and #tags. 
 
-![demo](https://user-images.githubusercontent.com/454185/67789506-ae761480-faa6-11e9-9d56-02964f7cd148.png)
-
 Enter ‘/’ symbol to see a list of commands: 
 
+```
 /getlink — get a link to your Remembrall page; only you can see it.  
-/makepublic — make Remembrall page visible for everyone on the internet.  
+
+/makepublic — make Remembrall page visible for everyone on the internet. 
+
 /makeprivate — make Remembrall page available only with the secret key.  
-/resetkey — reset Remembrall link secret token.  
+
+/resetkey — reset Remembrall link secret token.
+```
+
+![demo](https://user-images.githubusercontent.com/454185/67789506-ae761480-faa6-11e9-9d56-02964f7cd148.png)
 
 
 ### How many links I can store up with Remembrall?
@@ -47,5 +52,5 @@ Now you can store up only text and links. If you need more, message me.
 
 No. Bot stores up messages only by regular users.
 
-### Contacts
+## Contacts
 If you have any further questions, comments and suggestion, message me: [open ticket](https://github.com/antonlukin/remembrall/issues/new) on Github or write me to [Telegram](https://tgram.lukin/lukin)
