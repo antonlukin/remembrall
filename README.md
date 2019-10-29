@@ -6,7 +6,9 @@ By default your links are only visible to you, but you can make Remembrall page 
 
 Remembrall is an awesome tool for those who love notes, organization and clear design. 
 
-![demo](https://user-images.githubusercontent.com/454185/67787765-b41e2b00-faa3-11e9-8f5c-663d1e2a65cd.png)
+![demo](https://user-images.githubusercontent.com/454185/67796573-dc615600-fab2-11e9-9ddb-5c6b40ef73f3.png)
+   
+[Take a look at the demo →](https://remembrall.app/temenkova)
 
 
 ## How it works 
@@ -24,9 +26,11 @@ Enter ‘/’ symbol to see a list of commands:
 
 /resetkey — reset Remembrall link secret token.
 ```
-
+   
+ 
 ![demo](https://user-images.githubusercontent.com/454185/67789506-ae761480-faa6-11e9-9d56-02964f7cd148.png)
-
+   
+ 
 
 ### How many links I can store up with Remembrall?
 
