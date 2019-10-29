@@ -1,12 +1,12 @@
 # With Remembrall, all your links in one place
 
-![demo](https://user-images.githubusercontent.com/454185/67787765-b41e2b00-faa3-11e9-8f5c-663d1e2a65cd.png)
-
 Remembrall is a Telegram bot for saving and sharing useful links. It lets you create a list of links related to your Telegram account. Just send a message with a link to [@remembrall_robot](https://tgram.lukin/remembrall_robot), optionally add description and hashtags for creating easy-to-find navigation. 
 
 By default your links are only visible to you, but you can make Remembrall page public for everyone or for the people with access to the unique key. 
 
 Remembrall is an awesome tool for those who love notes, organization and clear design. 
+
+![demo](https://user-images.githubusercontent.com/454185/67787765-b41e2b00-faa3-11e9-8f5c-663d1e2a65cd.png)
 
 
 ## How it works 
