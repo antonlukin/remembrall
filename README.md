@@ -25,6 +25,8 @@ Enter ‘/’ symbol to see a list of commands:
 /makeprivate — make Remembrall page available only with the secret key.  
 
 /resetkey — reset Remembrall link secret token.
+
+/forget — delete message from database.
 ```
    
  

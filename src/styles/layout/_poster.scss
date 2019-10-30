@@ -92,17 +92,14 @@
     }
 
     @media screen and (max-width: 1023px) {
-      flex: 0 1 30rem;
+      flex: 0 1 auto;
       margin-top: 2rem;
+      margin-right: 0;
     }
 
     @media screen and (max-width: 767px) {
-      flex: 0 1 28rem;
+      margin-top: 4rem;
       order: 2;
-    }
-
-    @media screen and (max-width: 479px) {
-      margin-top: 1rem;
     }
   }
 
