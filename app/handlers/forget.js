@@ -9,12 +9,13 @@ module.exports = (ctx) => {
       // Select user info by id
       let sql = `DELETE FROM messages WHERE message = ? AND chat = ? AND user = ?`;
 
-      database.run(sql, [message, chat, msg.from.id], (err) => {
+      // Don't use fat arrow here to save this context
+      database.run(sql, [message, chat, msg.from.id], function (err) {
         if (err) {
           reject(err.message);
         }
 
-        resolve();
+        resolve(this.changes);
       });
     });
   }
@@ -22,8 +23,12 @@ module.exports = (ctx) => {
   // Prepare message to delete
   const prepareMessage = (message, chat) => {
     removeMessage(message, chat)
-      .then(() => {
-        ctx.reply('Done. This message was removed from the database');
+      .then((count) => {
+        if (count > 0) {
+          return ctx.reply('Done. This message was removed from the database');
+        }
+
+        ctx.reply('This message has already been deleted or you can’t access it');
       })
       .catch(message => {
         ctx.error(message, ctx);
