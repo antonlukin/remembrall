@@ -1,15 +1,20 @@
 (() => {
-  const field = document.querySelector('.search');
+  const search = document.querySelector('.search');
   const items = document.querySelector('.items');
 
+  // Check if elemets exist
+  if (search === null || items === null) {
+    return false;
+  }
+
   // Show search block
-  field.classList.add('search--visible');
+  search.classList.add('search--visible');
 
   // Focus search input
-  field.focus();
+  search.focus();
 
-  const updateField = () => {
-    let value = field.value.toLowerCase();
+  const updateSearch = () => {
+    let value = search.value.toLowerCase();
 
     if (value.indexOf('#') === 0) {
       value = value.replace(/^#/, '');
@@ -17,7 +22,7 @@
 
     let found = 0;
 
-    field.classList.remove('search--error');
+    search.classList.remove('search--error');
 
     items.querySelectorAll('.item').forEach((item, i) => {
       let text = item.textContent.toLowerCase();
@@ -32,7 +37,7 @@
     });
 
     if (found < 1) {
-      field.classList.add('search--error');
+      search.classList.add('search--error');
     }
   }
 
@@ -40,12 +45,12 @@
   items.querySelectorAll('button[data-hashtag]').forEach((button, i) => {
     // Add button handler
     button.addEventListener('click', () => {
-      field.value = '#' + button.dataset.hashtag;
+      search.value = '#' + button.dataset.hashtag;
 
-      return updateField();
+      return updateSearch();
     });
   });
 
   // Search messages
-  field.addEventListener('keyup', updateField);
+  search.addEventListener('keyup', updateSearch);
 })();

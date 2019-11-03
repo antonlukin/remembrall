@@ -1,0 +1,15 @@
+{
+    "background_color": "#202020",
+    "description": "Remembrall is a Telegram bot for saving and sharing useful links. It lets you create a list of links related to your Telegram account.",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "images/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "name": "Remembrall",
+    "short_name": "Remembrall",
+    "start_url": "/"
+  }

@@ -6,7 +6,7 @@
     "url": "https://lukin.me"
   },
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "autolinker": "^3.11.1",
     "dotenv": "^8.1.0",
