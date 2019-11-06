@@ -1,48 +1,51 @@
-const CACHE = 'offline-1.0.1';
+const staticCacheName = 'cache-1.0.1';
+
+const filesToCache = [
+  '/',
+  '/scripts.min.js',
+  '/styles.min.css',
+  '/images/cover.jpg',
+  '/fonts/merriweather.woff',
+  '/fonts/merriweather.woff2'
+];
 
 
-/**
- * Cache resources
- */
-self.addEventListener('install', function (event) {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE).then(function (cache) {
-      cache.addAll([
-        '/',
-        'scripts.min.js',
-        'styles.min.css',
-        'images/cover.jpg',
-        'fonts/merriweather.woff',
-        'fonts/merriweather.woff2'
-      ]);
+    caches.open(staticCacheName)
+    .then(cache => {
+      return cache.addAll(filesToCache);
     })
   );
 });
 
 
-/**
- * Respond with cached resources
- */
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(function (request) {
-      return request || fetch(event.request)
+    caches.match(event.request)
+    .then(response => {
+      if (response) {
+        return response;
+      }
+
+      return fetch(event.request)
     })
   );
 });
 
 
-/**
- * Delete outdated cache
- */
-self.addEventListener('activate', function (event) {
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [staticCacheName];
+
   event.waitUntil(
-    caches.keys().then(function (keys) {
-      Promise.all(keys.map(function (key) {
-        if (key !== CACHE) {
-          return caches.delete(key)
-        }
-      }))
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
     })
   );
 });
