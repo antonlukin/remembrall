@@ -22,18 +22,20 @@ module.exports = (ctx) => {
 
   // Prepare message to delete
   const prepareMessage = (message, chat) => {
-    removeMessage(message, chat)
-      .then((count) => {
-        if (count > 0) {
-          return ctx.reply('Done. This message was removed from the database');
-        }
-
+    // Delete message from channel
+    ctx.telegram.deleteMessage(chat, message)
+      .catch(message => {
         ctx.reply('This message has already been deleted or you can’t access it');
       })
+
+    removeMessage(message, chat)
       .catch(message => {
         ctx.error(message, ctx);
       })
   }
+
+  // Delete current message
+  ctx.deleteMessage();
 
   // Check if the message replied
   if (typeof msg.reply_to_message !== 'undefined') {
