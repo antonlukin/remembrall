@@ -9,6 +9,7 @@
   "version": "1.0.1",
   "dependencies": {
     "autolinker": "^3.11.1",
+    "caniuse-lite": "^1.0.30001179",
     "dotenv": "^8.1.0",
     "escape-html": "^1.0.3",
     "express": "^4.17.1",
