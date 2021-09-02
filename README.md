@@ -15,7 +15,7 @@ Remembrall is an awesome tool for those who love notes, organization and clear d
 
 Send messages to [@remembrall_robot](https://t.me/remembrall_robot) in Telegram: paste your links, add descriptions and #tags. 
 
-Enter / symbol to see a list of commands: 
+#### Where can I find a list of all commands?
 
 ```
 /getlink — get a link to your Remembrall page; only you can see it.  
@@ -49,7 +49,5 @@ Now you can store up only text and links. If you need more, message me.
 
 No. Bot stores up messages only by regular users.
 
-![demo](https://user-images.githubusercontent.com/454185/67789506-ae761480-faa6-11e9-9d56-02964f7cd148.png)
-
-## Contacts
+#### I still have questions. Who can I ask them?
 If you have any further questions, comments and suggestion, message me: [open ticket](https://github.com/antonlukin/remembrall/issues/new) on Github or write me to [Telegram](https://t.me/lukin)
