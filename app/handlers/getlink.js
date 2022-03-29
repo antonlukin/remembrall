@@ -1,4 +1,4 @@
-const nanoid = require('nanoid/generate');
+const nanoid = require('nanoid');
 const database = require('../database');
 
 module.exports = (ctx) => {
@@ -50,11 +50,13 @@ module.exports = (ctx) => {
         return ctx.reply('Your private remembrall link: \n' + url);
       }
 
+      const custom = nanoid.customAlphabet('0123456789abcdef', 32);
+
+      // Set new random key
+      const key = custom();
+
       // Set username
       const username = msg.from.username || msg.from.id;
-
-      // Set key
-      const key = nanoid('0123456789abcdef', 32);
 
       addUser(key, username)
         .then(() => {

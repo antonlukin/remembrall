@@ -1,0 +1,84 @@
+.faq {
+  display: block;
+
+  width: $width-content;
+  max-width: 100%;
+  margin: 2.5rem auto;
+  padding: 0 2rem;
+
+  & > * {
+    display: block;
+    width: calc($width-content / 2);
+    max-width: 100%;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-family: $font-caption;
+    line-height: 1.5;
+
+    @media screen and (max-width: 479px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  h3 {
+    margin: 2.25rem 0 0.75rem;
+    font-family: $font-caption;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.375;
+
+    @media screen and (max-width: 1023px) {
+      margin: 2rem 0 0.5rem;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  p {
+    font-size: 0.875rem;
+    font-family: $font-system;
+    color: $color-text;
+
+    @media screen and (max-width: 767px) {
+      font-size: 0.875rem;
+    }
+  }
+
+  a {
+    color: $color-links;
+    word-break: break-word;
+  }
+
+  ul {
+    margin-left: 2rem;
+
+    @media screen and (max-width: 767px) {
+      margin-left: 0;
+    }
+  }
+
+  li {
+    margin: 0.375rem 0;
+    font-size: 0.875rem;
+    font-family: $font-system;
+    color: $color-text;
+
+    @media screen and (max-width: 767px) {
+      font-size: 0.875rem;
+    }
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 479px) {
+    padding: 0 1rem;
+  }
+}

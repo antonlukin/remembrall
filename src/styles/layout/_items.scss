@@ -11,7 +11,7 @@
     display: block;
     position: relative;
 
-    width: $width-content / 2;
+    width: calc($width-content / 2);
     max-width: 100%;
     margin-bottom: 2rem;
     padding-top: 0.5rem;

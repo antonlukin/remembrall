@@ -1,4 +1,4 @@
-const nanoid = require('nanoid/generate');
+const nanoid = require('nanoid');
 const database = require('../database');
 
 module.exports = (ctx) => {
@@ -42,8 +42,10 @@ module.exports = (ctx) => {
         return ctx.reply('No key to reset. Request remembrall link first');
       }
 
-      // Set key
-      const key = nanoid('0123456789abcdef', 32);
+      const custom = nanoid.customAlphabet('0123456789abcdef', 32);
+
+      // Set new random key
+      const key = custom();
 
       resetKey(key)
         .then(() => {

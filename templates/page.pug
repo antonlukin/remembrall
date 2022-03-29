@@ -8,20 +8,19 @@ html(lang="en")
     else
       title Remembrall notes shared with Telegram
   body
-    .canvas
-      header.header
-        h1 Remembrall notes
-        if (username)
-          h2 Shared by @
-            a(href='https://t.me/' + username) #{username}
-        else
-          h2 Shared with Telegram
+    header.header
+      h1 Remembrall notes
+      if (username)
+        h2 Shared by @
+          a(href='https://t.me/' + username) #{username}
+      else
+        h2 Shared with Telegram
 
-        input.search(type='text' placeholder='Search messages')
+      input.search(type='text' placeholder='Search messages')
 
-      section.items
-        each item in items
-          article.item(id=item.id) !{item.text}
-            a.number(href='#' + item.id)
+    section.items
+      each item in items
+        article.item(id=item.id) !{item.text}
+          a.number(href='#' + item.id)
 
-      include footer
+    include footer

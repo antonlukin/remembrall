@@ -17,20 +17,38 @@ $font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, Can
 $font-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
 
 html {
-  scroll-behavior: smooth;
-}
+  display: flex;
+  flex-flow: row nowrap;
 
-body {
+  width: 100%;
+  min-height: 100%;
   padding: 1rem;
+
   font-size: 16px;
   line-height: 1.5;
   font-family: $font-system;
 
   background-color: $color-text;
 
+  scroll-behavior: smooth;
+
   @media screen and (max-width: 479px) {
     padding: 0.5rem;
   }
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  color: $color-text;
+  background-color: $color-canvas;
+
+  border-radius: 0.25rem;
 }
 
 ::placeholder{

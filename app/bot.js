@@ -1,4 +1,4 @@
-const Telegraf = require('telegraf');
+const { Telegraf } = require('telegraf');
 const handlers = require('./handlers');
 
 // Create telegraf instance

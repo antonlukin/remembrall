@@ -8,28 +8,29 @@
   "license": "MIT",
   "version": "1.0.2",
   "dependencies": {
-    "autolinker": "^3.11.1",
-    "caniuse-lite": "^1.0.30001179",
+    "autolinker": "^3.15.0",
+    "caniuse-lite": "^1.0.30001320",
     "db-migrate-sqlite3": "^0.4.0",
-    "dotenv": "^8.1.0",
+    "dotenv": "^16.0.0",
     "escape-html": "^1.0.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "hashtag-regex": "^2.1.0",
-    "http-errors": "^1.7.3",
-    "nanoid": "^2.1.3",
+    "http-errors": "^2.0.0",
+    "nanoid": "^3.3.2",
     "pug": "^3.0.1",
-    "sqlite3": "^4.1.0",
+    "sqlite3": "^5.0.2",
     "striptags": "^3.1.1",
-    "telegraf": "^3.32.0"
+    "telegraf": "^4.7.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^6.1.0",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-plumber": "^1.2.1",
-    "gulp-sass": "^5.0.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sass-glob": "^1.1.0",
-    "gulp-uglify-es": "^2.0.0"
+    "gulp-uglify-es": "^3.0.0",
+    "sass": "^1.49.9"
   }
 }

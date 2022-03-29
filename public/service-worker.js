@@ -1,14 +1,15 @@
-const staticCacheName = 'cache-1.0.1';
+const staticCacheName = 'cache-1.0.2';
 
 const filesToCache = [
   '/',
   '/scripts.min.js',
   '/styles.min.css',
   '/images/cover.jpg',
-  '/fonts/merriweather.woff',
-  '/fonts/merriweather.woff2'
+  '/fonts/merriweather-regular.woff',
+  '/fonts/merriweather-regular.woff2',
+  '/fonts/merriweather-bold.woff',
+  '/fonts/merriweather-bold.woff2'
 ];
-
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -18,7 +19,6 @@ self.addEventListener('install', event => {
     })
   );
 });
-
 
 self.addEventListener('fetch', event => {
   event.respondWith(
@@ -32,7 +32,6 @@ self.addEventListener('fetch', event => {
     })
   );
 });
-
 
 self.addEventListener('activate', event => {
   const cacheWhitelist = [staticCacheName];

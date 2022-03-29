@@ -5,7 +5,7 @@
  *
  * @author Anton Lukin
  * @license MIT
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 

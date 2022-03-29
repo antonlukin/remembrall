@@ -1,5 +1,6 @@
 const express = require('express');
 const models = require('./models');
+const package = require('../package.json');
 
 // Create express instance
 const app = express();
@@ -8,19 +9,23 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/../templates');
 
+app.locals.version = package.version;
+
 // Set static public folder
 app.use(express.static(__dirname + '/../public'));
 
+// Show FAQ page
+app.get('/faq', (req, res, next) => {
+  res.render('faq');
+});
 
 // Show user link
 app.get('/:username/:key([a-z0-9]{32})?', models.auth, models.page);
-
 
 // Show home page
 app.get('/', (req, res, next) => {
   res.render('home');
 });
-
 
 // Show server error
 app.use((err, req, res, next) => {

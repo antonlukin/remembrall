@@ -15,7 +15,6 @@
     h1 {
       margin-bottom: 1rem;
       font-family: $font-caption;
-      font-weight: 400;
       font-size: 2.625rem;
       line-height: 1.25;
 
@@ -92,14 +91,10 @@
     }
 
     @media screen and (max-width: 1023px) {
-      flex: 0 1 auto;
-      margin-top: 2rem;
-      margin-right: 0;
-    }
-
-    @media screen and (max-width: 767px) {
-      margin-top: 4rem;
       order: 2;
+
+      margin-top: 4rem;
+      margin-right: 0;
     }
   }
 
@@ -115,10 +110,6 @@
     background-position: center center;
 
     @media screen and (max-width: 1023px) {
-      min-height: 20rem;
-    }
-
-    @media screen and (max-width: 767px) {
       flex: 0 0 100%;
 
       min-height: 5rem;
@@ -130,7 +121,7 @@
     }
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     flex-flow: row wrap;
     margin-top: 0;
   }
