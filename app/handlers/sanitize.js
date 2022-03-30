@@ -24,6 +24,10 @@ module.exports = (ctx, next) => {
   }
 
   const applyEntity = (text, entity) => {
+    if (entity.type === 'text_link') {
+      return text + "\n" + entity.url;
+    }
+
     const head = text.substring(0, entity.offset)
     const tail = text.substring(entity.offset + entity.length)
     const content = wrapEntity(text.substring(entity.offset, entity.offset + entity.length), entity)
