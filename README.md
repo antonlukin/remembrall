@@ -1,53 +1,36 @@
-# With Remembrall, all your links in one place
+# Remembrall
 
-[Remembrall](https://remembrall.app) is a Telegram bot for saving and sharing useful links. It lets you create a list of links related to your Telegram account. Just send a message with a link to [@remembrall_robot](https://t.me/remembrall_robot), optionally add description and hashtags for creating easy-to-find navigation.
+> [!CAUTION]
+> **The project is closed.** Remembrall is no longer running: the bot, the website and all user pages have been shut down and deleted, and the data has been removed. This repository is kept as an archive of the source code only.
 
-By default your links are only visible to you, but you can make Remembrall page public for everyone or for the people with access to the unique key.
+Remembrall was a Telegram bot for saving and sharing useful links. It let you keep a list of links tied to your Telegram account: you sent the bot a message with a link, optionally with a description and hashtags, and it built an easy-to-navigate page out of them.
 
-Remembrall is an awesome tool for those who love notes, organization and clear design.
-
-[Take a look at the demo →](https://remembrall.app/lukin)
+By default the links were visible only to their owner, but a Remembrall page could be made public for everyone or shared with people who had a unique secret key.
 
 ![demo](https://user-images.githubusercontent.com/454185/67796573-dc615600-fab2-11e9-9ddb-5c6b40ef73f3.png)
 
 
-## How it works
+## How it worked
 
-Send messages to [@remembrall_robot](https://t.me/remembrall_robot) in Telegram: paste your links, add descriptions and #tags.
+You sent messages to the bot in Telegram: pasted links, added descriptions and #tags. Editing a message in Telegram updated it on the page.
 
-### Where can I find a list of all commands?
+### Commands
 
 ```
 /getlink — get a link to your Remembrall page; only you can see it.
 /makepublic — make Remembrall page visible for everyone on the internet.
 /makeprivate — make Remembrall page available only with the secret key.
 /resetkey — reset Remembrall link secret token.
+/fixname — update the page URL after changing your Telegram username.
 /forget — delete message from database.
 ```
 
-### How many links I can store up with Remembrall?
+### Limits
 
-Remembrall has a storage limit: every user can store up 250 messages. When you go over the storage limit, you can still read existing content, but you won't be able to add new links. However, you can delete existing messages to free up your storage.
+- Every user could store up to 250 messages. Once over the limit, existing content stayed readable, but new links could not be added until some were deleted.
+- Only text and links were supported.
+- The bot worked only with regular users, not in groups or channels.
 
-### How I can delete my message?
+### Deleting messages
 
-If you want to remove information from your Remembrall page, open chat with Remembrall bot, find the message and reply on it with `/forget` command. In situation when message has already been deleted from conversation, you can get link on it. Copy link on Remembrall page by tapping # icon and send it to [@remembrall_robot](https://t.me/remembrall_robot) with `/forget` command.
-
-### How do I edit message?
-
-Just edit it in Telegram conversation.
-
-### What happens if I change my username on Telegram?
-
-If you want update your url on Remembrall page, you should enter /fixname command.
-
-### Which content I can save with Remembrall?
-
-Now you can store up only text and links. If you need more, message me.
-
-### Can I use Remembrall in groups and channels?
-
-No. Bot stores up messages only by regular users.
-
-### I still have questions. Who can I ask them?
-If you have any further questions, comments and suggestion, message me: [open ticket](https://github.com/antonlukin/remembrall/issues/new) on Github or write me to [Telegram](https://t.me/lukin)
+To remove a message from the page, you replied to it in the chat with the bot using the `/forget` command. If the message had already been deleted from the conversation, you could copy its link from the Remembrall page (the # icon) and send it to the bot with `/forget`.
